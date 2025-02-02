@@ -2,10 +2,25 @@ import path from 'path';
 import fs from 'fs';
 import cors from "cors"
 import express from "express"
+import { fileURLToPath } from 'url';
 const app = express();
 app.use(express.json())
 app.use(cors({origin: '*', allowedHeaders: ['Content-Type']}));
-let file_path = path.join(path.dirname(import.meta.dirname),"backend","data", "file.json");
+// let file_path = path.join(path.dirname(new URL(import.meta.url).pathname), "data", "file.json");
+// let file_path = "../backend/data/file.json";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+let file_path = path.join(__dirname, "data", "file.json");
+console.log(file_path);
+fs.exists(file_path, (exists) => {
+    console.log(exists);
+    if (exists) {
+        console.log(true);
+    } else {
+        console.log(false);
+    }
+})
 app.post("/", (req, res) => {
     res.header({"Content-Type": "application/json"})
     console.log(req.body);
@@ -61,10 +76,13 @@ app.get("/data", (req, res) => {
     fs.readFile(file_path, (err, data) => {
         if (err) {
             res.end(JSON.stringify({"res": "bad"}));
+        } else if (data) {
+            let users_data = JSON.parse(data);
+            res.write(JSON.stringify(users_data));
+            res.end();
+        } else {
+            res.end(JSON.stringify({"res": "bad"}));
         }
-        let users_data = JSON.parse(data);
-        res.write(JSON.stringify(users_data));
-        res.end();
     })
 })
 app.listen(process.env.PORT, () => {
