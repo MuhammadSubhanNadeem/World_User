@@ -70,3 +70,4 @@ app.get("/data", (req, res) => {
 app.listen(process.env.PORT, () => {
     console.log(`PORT LISTENING ON ${process.env.PORT}`);
 });
+module.exports = app;
