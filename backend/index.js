@@ -5,7 +5,7 @@ import express from "express"
 const app = express();
 app.use(express.json())
 app.use(cors({origin: '*', allowedHeaders: ['Content-Type']}));
-let file_path = path.join(path.dirname(import.meta.dirname), "data/file.json");
+let file_path = path.join(path.dirname(import.meta.dirname),"backend","data", "file.json");
 app.post("/", (req, res) => {
     res.header({"Content-Type": "application/json"})
     console.log(req.body);
@@ -70,4 +70,4 @@ app.get("/data", (req, res) => {
 app.listen(process.env.PORT, () => {
     console.log(`PORT LISTENING ON ${process.env.PORT}`);
 });
-module.exports = app;
+// module.exports = app;

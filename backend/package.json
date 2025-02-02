@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "server": "node --watch --env-file=.env ./server/index.js"
+    "server": "node --watch --env-file=.env index.js"
   },
   "author": "",
   "license": "ISC",
