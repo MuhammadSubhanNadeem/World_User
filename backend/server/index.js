@@ -2,7 +2,6 @@ import path from 'path';
 import fs from 'fs';
 import cors from "cors"
 import express from "express"
-import { log } from 'console';
 const app = express();
 app.use(express.json())
 app.use(cors({origin: '*', allowedHeaders: ['Content-Type']}));
