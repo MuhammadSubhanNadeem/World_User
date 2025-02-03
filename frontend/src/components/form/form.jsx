@@ -35,12 +35,12 @@ function Form() {
             inputEmail.current.style.border = "1px solid white";
             userImage.current.style.border = "1px solid white";
           }, 1500);
-          window.alert("❌ You Are Already ON Fire! Get Out On All User Data 😄!");
+          window.alert("❌ You Are Already ON Fire! Get Out On 'All User Data' 😄!");
         } else if (res.img_upload && res.write){
           inputName.current.value = "";
           inputEmail.current.value = "";
           userImage.current.value = "";
-          window.alert("✅ You Are Already ON Fire! Get Out On All User Data!");
+          window.alert("✅ You Are ON Fire Know Get Out On 'All User Data!'");
         }
       });
   }
